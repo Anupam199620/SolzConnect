@@ -3,5 +3,5 @@ export default {};
 </script>
 
 <template>
-  <h3>SkyConnect</h3>
+  <h3 class="text-center">SkyConnect</h3>
 </template>

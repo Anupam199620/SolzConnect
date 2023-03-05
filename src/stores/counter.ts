@@ -1,12 +1,12 @@
-import { ref, computed } from "vue";
 import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore("counter", () => {
-  const count = ref(0);
-  const doubleCount = computed(() => count.value * 2);
-  function increment() {
-    count.value++;
-  }
-
-  return { count, doubleCount, increment };
+export const useInitialStore = defineStore("counter", {
+  state: () => ({ hostUrl: "", apiHost: "http://127.0.0.4:8000/api/v1" }),
+  getters: {
+    domainUrl(state) {
+      state.hostUrl = window.location.host;
+      return state.hostUrl;
+    },
+  },
+  actions: {},
 });
