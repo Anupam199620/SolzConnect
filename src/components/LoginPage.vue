@@ -24,12 +24,15 @@ export default {
         body: JSON.stringify(this.user),
       })
       .then((response) => response.json())
-      .then((data) => {
-        if (data.success) {
-          this.$router.push('/home');
+        .then((data) => {
+        if (data.success && ('token' in data)) {
+          localStorage.setItem('isAuthenticated', true);
+          setTimeout(() => {
+            this.$router.push('/home');
+          }, 2000);
         }
         else {
-          
+    
         }
         this.loading = false;
       })
